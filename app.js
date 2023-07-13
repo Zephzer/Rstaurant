@@ -20,11 +20,6 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended:true }))
 app.use(methodOverride('_method'))
 
-app.get('/search', (req, res) => {
-    const restaurants = restaurantList.results.filter(restaurant => restaurant.name.toLowerCase().includes(req.query.keyword.toLowerCase()))
-    res.render('index', { restaurants: restaurants })
-})
-
 app.use(routes)
 
 app.listen(port, () => {
