@@ -9,7 +9,7 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    const { name, category, location, phone, description, image} = req.body
+    const { name, category, location, phone, description, image } = req.body
     const todo = new Restaurant({ name, category, location, phone, description, image })
     return todo.save()
                .then(() => res.redirect('/'))
@@ -24,6 +24,20 @@ router.get('/:rest_id', (req, res) => {
                      .catch(err => console.log(err))
 })
 
+router.get('/:rest_id/edit', (req, res) => {
+    const _id = req.params.rest_id
+    return Restaurant.findOne({ _id })
+                    .lean()
+                    .then(restaurant => res.render('edit', { restaurant }))
+                    .catch(err => console.log(err))
+})
 
+router.put('/:rest_id', (req, res) => {
+    const info = req.body
+    const _id = req.params.rest_id
+    Restaurant.updateOne({ _id }, info )
+            .then(() => res.redirect(`/restaurants/${_id}`))
+            .catch(error => console.log(error))
+})
 
 module.exports = router
