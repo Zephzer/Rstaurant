@@ -6,6 +6,7 @@ const restaurantList = require('./models/seeds/restaurant.json')
 const routes = require('./routes/index')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+const session = require('express-session')
 
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
@@ -16,6 +17,12 @@ app.engine('handlebars', exhbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 app.use(express.static('public'))
+
+app.use(session({
+    secret: 'ThisIsMySecret',
+    resave: false,
+    saveUninitialized: true
+}))
 
 app.use(bodyParser.urlencoded({ extended:true }))
 app.use(methodOverride('_method'))
