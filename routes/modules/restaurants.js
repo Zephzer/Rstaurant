@@ -40,4 +40,12 @@ router.put('/:rest_id', (req, res) => {
             .catch(error => console.log(error))
 })
 
+router.delete('/:rest_id', (req, res) => {
+    const _id = req.params.rest_id
+    return Restaurant.findOne({ _id })
+            .then(restaurant => restaurant.remove())
+            .then(() => res.redirect('/'))
+            .catch(error => console.log(error))
+})
+
 module.exports = router
