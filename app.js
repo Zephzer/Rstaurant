@@ -5,6 +5,7 @@ const exhbs = require('express-handlebars')
 const restaurantList = require('./models/seeds/restaurant.json')
 const routes = require('./routes/index')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
@@ -17,16 +18,7 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 
 app.use(bodyParser.urlencoded({ extended:true }))
-
-// app.get('/', (req, res) => {
-//     const restaurants = restaurantList.results
-//     res.render('index', { restaurants: restaurants })
-// })
-
-app.get('/restaurants/:rest_id', (req, res) => {
-    const restaurant = restaurantList.results.filter(restaurant => restaurant.id === Number(req.params.rest_id))
-    res.render('show', { restaurant: restaurant[0] })
-})
+app.use(methodOverride('_method'))
 
 app.get('/search', (req, res) => {
     const restaurants = restaurantList.results.filter(restaurant => restaurant.name.toLowerCase().includes(req.query.keyword.toLowerCase()))
