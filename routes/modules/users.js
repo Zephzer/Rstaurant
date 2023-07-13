@@ -1,12 +1,16 @@
 const express = require('express')
 const User = require('../../models/user')
-
+const passport = require('passport')
 const router = express.Router()
 
 router.get('/login', (req, res) => {
     res.render('login')
 })
 
+router.post('/login', passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/users/login'
+}))
 
 
 router.get('/register', (req, res) => {
@@ -32,11 +36,11 @@ router.post('/register', (req, res) => {
                 email,
                 password
             })
-            .then(() => res.redirect('/'))
-            .catch(err => console.log(err))
+                .then(() => res.redirect('/'))
+                .catch(err => console.log(err))
         }
     })
-    .catch(err => console.log(err))
+        .catch(err => console.log(err))
 })
 
 module.exports = router

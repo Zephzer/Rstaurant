@@ -2,11 +2,12 @@ const express = require('express')
 const app = express()
 const port = 3000
 const exhbs = require('express-handlebars')
-const restaurantList = require('./models/seeds/restaurant.json')
+const usePassport = require('./config/passport')
 const routes = require('./routes/index')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const session = require('express-session')
+
 
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
@@ -26,6 +27,8 @@ app.use(session({
 
 app.use(bodyParser.urlencoded({ extended:true }))
 app.use(methodOverride('_method'))
+
+usePassport(app)
 
 app.use(routes)
 
