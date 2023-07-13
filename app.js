@@ -7,7 +7,7 @@ const routes = require('./routes/index')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const session = require('express-session')
-
+const flash = require('connect-flash')
 
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
@@ -29,6 +29,7 @@ app.use(bodyParser.urlencoded({ extended:true }))
 app.use(methodOverride('_method'))
 
 usePassport(app)
+app.use(flash())
 
 app.use(routes)
 
