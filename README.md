@@ -11,7 +11,12 @@
 - npm install
 
 3.安裝完成後，請建立「.env」檔案，依照以下格式設定連到您自己 MongoDB 的連結：
-- MONGODB_URI=mongodb+srv://<您的 MongoDB 帳號>:<您的 MongoDB 密碼>@xxx.xxx.xxx.net/short-url?retryWrites=true&w=majority
+- FACEBOOK_ID=SKIP
+- FACEBOOK_SECRET=SKIP
+- FACEBOOK_CALLBACK=http://localhost:3000/auth/facebook/callback
+- SESSION_SECRET={{yoursecret}}
+- MONGODB_URI=mongodb+srv://{{account}}:{{password}}.qu1sf7p.mongodb.net/
+- PORT=3000
 
 4.執行以下指令，匯入本專案的種子資料到 MongoDB 資料庫：
 - npm run seed
@@ -23,4 +28,4 @@
 - npm run dev
 
 7.看到以下指令代表網站載入完成，可以使用瀏覽器打開 http://localhost:3000 即可進入網站。
-- The website http://localhost:3000 is online.
+- This express is running on http://localhost:3000
