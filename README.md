@@ -15,7 +15,7 @@
 - FACEBOOK_SECRET=SKIP
 - FACEBOOK_CALLBACK=http://localhost:3000/auth/facebook/callback
 - SESSION_SECRET={{yoursecret}}
-- MONGODB_URI=mongodb+srv://{{account}}:{{password}}.qu1sf7p.mongodb.net/
+- MONGOOSE_URI=mongodb+srv://{{account}}:{{password}}.qu1sf7p.mongodb.net/
 - PORT=3000
 
 4.執行以下指令，匯入本專案的種子資料到 MongoDB 資料庫：
