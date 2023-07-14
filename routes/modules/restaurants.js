@@ -4,10 +4,12 @@ const router = express.Router()
 
 const Restaurant = require('../../models/restaurant')
 
+// link to new page
 router.get('/new', (req, res) => {
     return res.render('new')
 })
 
+// create function
 router.post('/', (req, res) => {
     const userId = req.user._id
     const { name, category, location, phone, description, image } = req.body
@@ -17,6 +19,7 @@ router.post('/', (req, res) => {
                .catch(error => console.log(error))
 })
 
+// link to detail
 router.get('/:rest_id', (req, res) => {
     const userId = req.user._id
     const _id = req.params.rest_id
@@ -26,6 +29,7 @@ router.get('/:rest_id', (req, res) => {
                      .catch(err => console.log(err))
 })
 
+// link to edit
 router.get('/:rest_id/edit', (req, res) => {
     const userId = req.user._id
     const _id = req.params.rest_id
@@ -35,6 +39,7 @@ router.get('/:rest_id/edit', (req, res) => {
                     .catch(err => console.log(err))
 })
 
+// edit function
 router.put('/:rest_id', (req, res) => {
     const userId = req.user._id
     const info = req.body
@@ -44,6 +49,7 @@ router.put('/:rest_id', (req, res) => {
             .catch(error => console.log(error))
 })
 
+// delete function
 router.delete('/:rest_id', (req, res) => {
     const userId = req.user._id
     const _id = req.params.rest_id

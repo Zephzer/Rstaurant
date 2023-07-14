@@ -4,20 +4,24 @@ const passport = require('passport')
 const router = express.Router()
 const bcrypt = require('bcryptjs')
 
+// link to login page
 router.get('/login', (req, res) => {
     res.render('login')
 })
 
+// login function
 router.post('/login', passport.authenticate('local', {
     successRedirect: '/',
-    failureRedirect: '/users/login'
+    failureRedirect: '/users/login',
+    failureFlash: true
 }))
 
-
+// link to register page
 router.get('/register', (req, res) => {
     res.render('register')
 })
 
+// register function
 router.post('/register', (req, res) => {
     const { name, email, password, confirmPassword } = req.body
     const errors = []
