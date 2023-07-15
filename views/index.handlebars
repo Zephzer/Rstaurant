@@ -16,7 +16,7 @@
     </div>
 </div>
 <div class="col-md-6 m-auto">
-<a class="btn btn-info" href="/restaurants/new">Create New Restaurant</a>
+    <a class="btn btn-info" href="/restaurants/new">Create New Restaurant</a>
 </div>
 
 <!-- restaurant list -->
@@ -47,9 +47,30 @@
                                         Edit
                                     </button>
                                 </a>
-                                <form action="/restaurants/{{ this._id }}?_method=DELETE" method="POST" style="display:inline;">
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">Delete</button>
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">確定要刪除嗎?</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <form action="/restaurants/{{ this._id }}?_method=DELETE" method="POST"
+                                                    style="display:inline;">
+                                                    <button type="subit" class="btn btn-primary"
+                                                        data-bs-dismiss="modal">Yes</button>
+                                                </form>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                                                    aria-label="Close">No</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </a>
