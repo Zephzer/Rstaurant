@@ -1,12 +1,11 @@
 <form action="/restaurants" method="POST">
     <div class="d-flex flex-column mt-3 align-items-center">
-        <input class="mt-2" type="text" placeholder="店家名稱" value="" name="name" required>
-        <input class="mt-2" type="text" placeholder="餐廳種類" value="" name="category" required>
-        <input class="mt-2" type="text" placeholder="餐廳地址" value="" name="location" required>
-        <input class="mt-2" type="tel" placeholder="電話號碼" value="" name="phone" required>
-        <input class="mt-2" type="text" placeholder="餐廳描述" value="" name="description" required>
-        <input class="mt-2" type="url" placeholder="照片(http://image.....)" value="" name="image" required>
-
+        <input class="mt-2" type="text" placeholder="店家名稱" value="" name="name" maxlength="10" required>
+        <input class="mt-2" type="text" placeholder="餐廳種類" value="" name="category" maxlength="10" required>
+        <input class="mt-2" type="text" placeholder="餐廳地址" value="" name="location" maxlength="30" required>
+        <input class="mt-2" type="tel" placeholder="03-XXXXXXX or 09-XXX" pattern="[0-9]{2}-[0-9]{5,8}" value="" name="phone" required>
+        <input class="mt-2" type="text" placeholder="餐廳描述" value="" name="description" maxlength="100" required>
+        <input class="mt-2" type="url" placeholder="照片(http://image.....)" pattern="https?://.+" value="" name="image" maxlength="2048" required>
         <button type="submit" class="btn btn-primary mt-2">Create</button>
         <button type="reset" class="btn btn-danger mt-2">Reset</button>
     </div>
